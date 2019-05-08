@@ -73,6 +73,6 @@ class App extends Component {
 // Track changes and add them to App props
 export default withTracker(() => {
   return {
-    tasks: Tasks.find({}).fetch(),
+    tasks: Tasks.find({}, { sort: { createdAt: -1 } }).fetch(),
   };
 })(App); // <-- Have wrapped App, now fetches the Tasks, do so rerenders when tasks change
