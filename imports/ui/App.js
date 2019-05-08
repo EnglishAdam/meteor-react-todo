@@ -103,7 +103,11 @@ class App extends Component {
 }
 
 // Track changes and add them to App props
+// Creates app component passes in props
 export default withTracker(() => {
+  // Component subscribes when it is created
+  Meteor.subscribe('tasks');
+
   return {
     tasks: Tasks.find({}, { sort: { createdAt: -1 } }).fetch(),
     incompleteCount: Tasks.find({ checked: { $ne: true } }).count(),
