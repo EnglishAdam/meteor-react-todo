@@ -108,6 +108,7 @@ class App extends Component {
 export default withTracker(() => {
   return {
     tasks: Tasks.find({}, { sort: { createdAt: -1 } }).fetch(),
-    incompleteCount: Tasks.find({ checked: { $ne: true } }).count()
+    incompleteCount: Tasks.find({ checked: { $ne: true } }).count(),
+    currentUser: Meteor.user()
   };
 })(App); // <-- Have wrapped App, now fetches the Tasks, do so rerenders when tasks change
